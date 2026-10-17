@@ -3,14 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>学中文！ - Community Chinese Learning</title>
+  <title>学中文！ - Day 01 充実版</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://unpkg.com/lucide@latest"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
-    /* 日本語は明朝体、英語は Times New Roman */
     body {
       font-family: "Times New Roman", "Noto Serif JP", YuMincho, "Hiragino Mincho ProN", serif;
     }
@@ -25,7 +24,7 @@
 </head>
 <body class="bg-neutral-50 text-neutral-900 antialiased min-h-screen flex flex-col">
 
-  <!-- Header (モノトーン・シック) -->
+  <!-- Header -->
   <header class="bg-black text-white border-b border-neutral-800 sticky top-0 z-50">
     <div class="max-w-5xl mx-auto px-4 py-4 flex justify-between items-center">
       <div class="flex items-center space-x-3">
@@ -36,7 +35,7 @@
         </div>
       </div>
       <div>
-        <span id="lesson-day" class="px-3 py-1 bg-neutral-900 text-neutral-200 rounded-full text-xs border border-neutral-700">Day 01 / HSK1+</span>
+        <span class="px-3 py-1 bg-neutral-900 text-neutral-200 rounded-full text-xs border border-neutral-700">Day 01 / HSK1+</span>
       </div>
     </div>
   </header>
@@ -44,15 +43,15 @@
   <!-- Hero Section -->
   <section class="bg-black text-white py-12 px-4 border-b border-neutral-800">
     <div class="max-w-4xl mx-auto">
-      <h2 id="lesson-title" class="text-3xl sm:text-4xl font-bold tracking-tight mb-4">
-        カフェで自己紹介 ＆ 声調（第一声・第四声）
+      <h2 class="text-3xl sm:text-4xl font-bold tracking-tight mb-4">
+        Day 01: カフェで自己紹介 ＆ 基本声調マスター
       </h2>
       <div class="bg-neutral-900 border border-neutral-800 rounded-xl p-4 flex items-start space-x-3 text-xs text-neutral-300">
         <i data-lucide="globe" class="w-4 h-4 text-white shrink-0 mt-0.5"></i>
         <div>
-          <strong class="text-white font-semibold">For English Speakers (C1 Level):</strong>
-          <span id="english-note" class="ml-1 text-neutral-300">
-            Chinese word order is S + V + O, just like English! "我是..." = "I am...". Notice how "你呢?" uses "呢" as a particle for "What about...?"
+          <strong class="text-white font-semibold">For English Speakers:</strong>
+          <span class="ml-1 text-neutral-300">
+            Chinese word order is S + V + O, identical to English! "我是..." = "I am...". Let's master the tones while building conversational confidence from Day 1.
           </span>
         </div>
       </div>
@@ -62,7 +61,7 @@
   <!-- Main Content -->
   <main class="max-w-4xl mx-auto px-4 py-10 flex-1 w-full space-y-12">
 
-    <!-- Speed Controller (モノトーン) -->
+    <!-- Speed Controller -->
     <div class="bg-white border border-neutral-200 rounded-xl p-4 flex flex-col sm:flex-row items-center justify-between gap-3 shadow-sm">
       <div class="flex items-center space-x-2 text-neutral-800">
         <i data-lucide="volume-2" class="w-5 h-5 shrink-0 text-black"></i>
@@ -74,13 +73,22 @@
       </div>
     </div>
 
-    <!-- Section 1: Phonetics -->
-    <section class="space-y-4">
+    <!-- Section 1: Detailed Explanations & Phonetics -->
+    <section class="space-y-6">
       <div class="flex items-center space-x-2 border-b border-neutral-200 pb-3">
-        <i data-lucide="mic" class="w-5 h-5 text-black"></i>
-        <h3 class="text-xl font-bold text-black">1. 今日の発音ポイント：声調（Tones）</h3>
+        <i data-lucide="book-open" class="w-5 h-5 text-black"></i>
+        <h3 class="text-xl font-bold text-black">1. 本日の学習解説 ＆ 発音ポイント</h3>
       </div>
-      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
+      <div class="bg-white border border-neutral-200 rounded-xl p-6 shadow-sm space-y-4 text-sm leading-relaxed text-neutral-700">
+        <p>
+          中国語の学習において、最初の関門は<strong>「声調（音のトーン）」</strong>です。同じ「ma」という音でも、トーンが変わると全く違う意味になります。今日は最も基本となる<strong>第一声（高い平らな音）</strong>と<strong>第四声（上から下に強く落とす音）</strong>を体に覚え込ませましょう。
+        </p>
+        <p>
+          また、文法構造は英語と同じ <strong>[Subject + Verb + Object]</strong> のSVO型です。「我是日本人。(I am Japanese.)」のように、英語の感覚をそのままスライドして話すことができます。
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <!-- Tone 1 -->
         <div class="bg-white border border-neutral-200 rounded-xl p-6 shadow-sm hover:border-black hover:shadow-md transition cursor-pointer">
           <div class="flex justify-between items-start mb-3">
@@ -88,7 +96,7 @@
             <span class="text-3xl font-black text-black">ā</span>
           </div>
           <h4 class="font-bold text-black text-lg mb-1">高音で平らにキープ (High & Flat)</h4>
-          <p class="text-xs text-neutral-600 mb-5">ドレミファソの「ソ」の高さを長く一定にキープ。「ドレミの歌のソ」のイメージ。</p>
+          <p class="text-xs text-neutral-600 mb-5">音楽の「ソ」の高さを一定に保ちます。</p>
           <button onclick="speak('mā')" class="w-full bg-black hover:bg-neutral-800 text-white font-medium py-2.5 px-4 rounded-lg text-xs flex items-center justify-center space-x-2 transition shadow-sm cursor-pointer">
             <i data-lucide="play-circle" class="w-4 h-4"></i>
             <span>音声を聞く: <strong>mā</strong> (媽/お母さん)</span>
@@ -102,7 +110,7 @@
             <span class="text-3xl font-black text-black">à</span>
           </div>
           <h4 class="font-bold text-black text-lg mb-1">上から下に一気に急降下 (Falling)</h4>
-          <p class="text-xs text-neutral-600 mb-5">カラスの鳴き声「カーッ！」や、英語の「No!」のような強いアクセント。</p>
+          <p class="text-xs text-neutral-600 mb-5">英語の「No!」のように、強く言い切るイメージ。</p>
           <button onclick="speak('mà')" class="w-full bg-black hover:bg-neutral-800 text-white font-medium py-2.5 px-4 rounded-lg text-xs flex items-center justify-center space-x-2 transition shadow-sm cursor-pointer">
             <i data-lucide="play-circle" class="w-4 h-4"></i>
             <span>音声を聞く: <strong>mà</strong> (罵/ののしる)</span>
@@ -115,10 +123,9 @@
     <section class="space-y-4">
       <div class="flex items-center space-x-2 border-b border-neutral-200 pb-3">
         <i data-lucide="message-square" class="w-5 h-5 text-black"></i>
-        <h3 class="text-xl font-bold text-black">2. 実践会話：カフェで自己紹介</h3>
+        <h3 class="text-xl font-bold text-black">2. 実践会話フレーズ（クリックで音声再生）</h3>
       </div>
       <div class="bg-white border border-neutral-200 rounded-xl overflow-hidden shadow-sm divide-y divide-neutral-100">
-        <!-- Dialogue 1 -->
         <div onclick="speak('你好！我叫 Take。')" class="p-5 hover:bg-neutral-50 transition cursor-pointer flex items-start space-x-4 group">
           <div class="mt-1 bg-neutral-100 group-hover:bg-black group-hover:text-white text-neutral-800 p-2.5 rounded-full shrink-0 transition">
             <i data-lucide="volume-2" class="w-4 h-4"></i>
@@ -130,7 +137,6 @@
           </div>
         </div>
 
-        <!-- Dialogue 2 -->
         <div onclick="speak('很高兴认识你！')" class="p-5 hover:bg-neutral-50 transition cursor-pointer flex items-start space-x-4 group">
           <div class="mt-1 bg-neutral-100 group-hover:bg-black group-hover:text-white text-neutral-800 p-2.5 rounded-full shrink-0 transition">
             <i data-lucide="volume-2" class="w-4 h-4"></i>
@@ -142,7 +148,6 @@
           </div>
         </div>
 
-        <!-- Dialogue 3 -->
         <div onclick="speak('我是日本人。你呢？')" class="p-5 hover:bg-neutral-50 transition cursor-pointer flex items-start space-x-4 group">
           <div class="mt-1 bg-neutral-100 group-hover:bg-black group-hover:text-white text-neutral-800 p-2.5 rounded-full shrink-0 transition">
             <i data-lucide="volume-2" class="w-4 h-4"></i>
@@ -156,43 +161,73 @@
       </div>
     </section>
 
-    <!-- Section 3: Quizzes -->
+    <!-- Section 3: Extended Quizzes (More Problems) -->
     <section class="space-y-6">
       <div class="flex items-center space-x-2 border-b border-neutral-200 pb-3">
         <i data-lucide="check-square" class="w-5 h-5 text-black"></i>
-        <h3 class="text-xl font-bold text-black">3. インタラクティブ穴埋め・選択問題</h3>
+        <h3 class="text-xl font-bold text-black">3. 実力確認クイズ（音声付き・全4問）</h3>
       </div>
 
-      <!-- Q1 Choice -->
+      <!-- Q1 -->
       <div class="bg-white border border-neutral-200 rounded-xl p-6 shadow-sm space-y-4">
-        <span class="text-xs font-bold text-black bg-neutral-100 px-3 py-1 rounded-full">Q1. 選択問題</span>
-        <p class="font-medium text-black">「〜です（英語の is / am / are）」を意味する単語の正しいピンインと漢字を選びなさい。</p>
+        <span class="text-xs font-bold text-black bg-neutral-100 px-3 py-1 rounded-full">Q1. 選択問題：意味の確認</span>
+        <p class="font-medium text-black">「〜です（英語の is / am / are）」を意味する正しい単語を選びなさい。</p>
         <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
-          <button onclick="checkChoice(0, this)" class="option-btn border border-neutral-300 rounded-xl p-4 text-left hover:border-black transition cursor-pointer bg-white">
+          <button onclick="checkQuiz(1, 0, this)" class="option-btn border border-neutral-300 rounded-xl p-4 text-left hover:border-black transition cursor-pointer bg-white">
             <div class="font-bold text-black">A. shì (是)</div>
           </button>
-          <button onclick="checkChoice(1, this)" class="option-btn border border-neutral-300 rounded-xl p-4 text-left hover:border-black transition cursor-pointer bg-white">
+          <button onclick="checkQuiz(1, 1, this)" class="option-btn border border-neutral-300 rounded-xl p-4 text-left hover:border-black transition cursor-pointer bg-white">
             <div class="font-bold text-black">B. shí (十)</div>
           </button>
-          <button onclick="checkChoice(2, this)" class="option-btn border border-neutral-300 rounded-xl p-4 text-left hover:border-black transition cursor-pointer bg-white">
+          <button onclick="checkQuiz(1, 2, this)" class="option-btn border border-neutral-300 rounded-xl p-4 text-left hover:border-black transition cursor-pointer bg-white">
             <div class="font-bold text-black">C. shī (师)</div>
           </button>
         </div>
         <div id="q1-feedback" class="hidden text-sm p-4 rounded-xl"></div>
       </div>
 
-      <!-- Q2 Input -->
+      <!-- Q2 -->
       <div class="bg-white border border-neutral-200 rounded-xl p-6 shadow-sm space-y-4">
-        <span class="text-xs font-bold text-black bg-neutral-100 px-3 py-1 rounded-full">Q2. 穴埋め問題</span>
-        <p class="font-medium text-black">以下の文の「私」にあたる中国語（ピンインまたは漢字）を入力してください。</p>
+        <span class="text-xs font-bold text-black bg-neutral-100 px-3 py-1 rounded-full">Q2. 選択問題：挨拶の返答</span>
+        <p class="font-medium text-black">「很高兴认识你！（はじめまして！）」と言われた時、同じように嬉しさを伝える返答として適切なものはどれか？</p>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <button onclick="checkQuiz(2, 0, this)" class="option-btn border border-neutral-300 rounded-xl p-4 text-left hover:border-black transition cursor-pointer bg-white">
+            <div class="font-bold text-black">A. 我很高兴 (Wǒ hěn gāoxìng)</div>
+          </button>
+          <button onclick="checkQuiz(2, 1, this)" class="option-btn border border-neutral-300 rounded-xl p-4 text-left hover:border-black transition cursor-pointer bg-white">
+            <div class="font-bold text-black">B. 再见 (Zàijiàn)</div>
+          </button>
+        </div>
+        <div id="q2-feedback" class="hidden text-sm p-4 rounded-xl"></div>
+      </div>
+
+      <!-- Q3 (Input) -->
+      <div class="bg-white border border-neutral-200 rounded-xl p-6 shadow-sm space-y-4">
+        <span class="text-xs font-bold text-black bg-neutral-100 px-3 py-1 rounded-full">Q3. 穴埋め問題：主語の入力</span>
+        <p class="font-medium text-black">以下の文の「私」にあたる中国語（ピンインまたは漢字）を入力しなさい。</p>
         <div class="bg-neutral-50 p-4 rounded-xl flex items-center space-x-3 text-lg border border-neutral-200">
-          <input type="text" id="q2-input" placeholder="入力..." class="border border-neutral-400 rounded-lg px-3 py-2 text-base focus:outline-none focus:border-black w-40 bg-white">
+          <input type="text" id="q3-input" placeholder="入力..." class="border border-neutral-400 rounded-lg px-3 py-2 text-base focus:outline-none focus:border-black w-40 bg-white">
           <span class="font-bold text-black">shì Rìběnrén. (我是日本人。)</span>
         </div>
-        <button onclick="checkInput()" class="bg-black hover:bg-neutral-800 text-white font-medium px-5 py-2.5 rounded-xl text-xs transition shadow-sm cursor-pointer">
+        <button onclick="checkInput3()" class="bg-black hover:bg-neutral-800 text-white font-medium px-5 py-2.5 rounded-xl text-xs transition shadow-sm cursor-pointer">
           答え合わせをする
         </button>
-        <div id="q2-feedback" class="hidden text-sm p-4 rounded-xl"></div>
+        <div id="q3-feedback" class="hidden text-sm p-4 rounded-xl"></div>
+      </div>
+
+      <!-- Q4 (Input) -->
+      <div class="bg-white border border-neutral-200 rounded-xl p-6 shadow-sm space-y-4">
+        <span class="text-xs font-bold text-black bg-neutral-100 px-3 py-1 rounded-full">Q4. 穴埋め問題：名前の紹介</span>
+        <p class="font-medium text-black">「私は〜という名前です」の「〜という名前である（jiào）」のピンインを入力しなさい。</p>
+        <div class="bg-neutral-50 p-4 rounded-xl flex items-center space-x-3 text-lg border border-neutral-200">
+          <span class="font-bold text-black">Wǒ</span>
+          <input type="text" id="q4-input" placeholder="入力..." class="border border-neutral-400 rounded-lg px-3 py-2 text-base focus:outline-none focus:border-black w-32 bg-white">
+          <span class="font-bold text-black">Take.</span>
+        </div>
+        <button onclick="checkInput4()" class="bg-black hover:bg-neutral-800 text-white font-medium px-5 py-2.5 rounded-xl text-xs transition shadow-sm cursor-pointer">
+          答え合わせをする
+        </button>
+        <div id="q4-feedback" class="hidden text-sm p-4 rounded-xl"></div>
       </div>
     </section>
 
@@ -229,22 +264,34 @@
       }
     }
 
-    function checkChoice(idx, btn) {
-      const fb = document.getElementById('q1-feedback');
+    function checkQuiz(qNum, optIdx) {
+      const fb = document.getElementById(`q${qNum}-feedback`);
       fb.classList.remove('hidden', 'bg-black', 'text-white', 'bg-neutral-100', 'text-black');
-      if (idx === 0) {
-        fb.classList.add('bg-black', 'text-white');
-        fb.innerHTML = '✓ 正解です！ shì (是) は第4声で力強く発音します。';
-        speak('是');
-      } else {
-        fb.classList.add('bg-neutral-100', 'text-black');
-        fb.innerHTML = '✕ 残念！「〜です」は第4声の shì (是) です。';
+      
+      if (qNum === 1) {
+        if (optIdx === 0) {
+          fb.classList.add('bg-black', 'text-white');
+          fb.innerHTML = '✓ 正解です！ shì (是) は第4声で力強く発音します。';
+          speak('是');
+        } else {
+          fb.classList.add('bg-neutral-100', 'text-black');
+          fb.innerHTML = '✕ 残念！「〜です」は第4声の shì (是) です。';
+        }
+      } else if (qNum === 2) {
+        if (optIdx === 0) {
+          fb.classList.add('bg-black', 'text-white');
+          fb.innerHTML = '✓ 正解です！ 「我也很高兴 (私も嬉しいです)」などと返します。再見は「さようなら」です。';
+          speak('我也很高兴');
+        } else {
+          fb.classList.add('bg-neutral-100', 'text-black');
+          fb.innerHTML = '✕ 残念！ 再見 (Zàijiàn) は別れの挨拶です。';
+        }
       }
     }
 
-    function checkInput() {
-      const val = document.getElementById('q2-input').value.trim().toLowerCase();
-      const fb = document.getElementById('q2-feedback');
+    function checkInput3() {
+      const val = document.getElementById('q3-input').value.trim().toLowerCase();
+      const fb = document.getElementById('q3-feedback');
       fb.classList.remove('hidden', 'bg-black', 'text-white', 'bg-neutral-100', 'text-black');
       if (['wǒ', 'wo', '我'].includes(val)) {
         fb.classList.add('bg-black', 'text-white');
@@ -253,6 +300,20 @@
       } else {
         fb.classList.add('bg-neutral-100', 'text-black');
         fb.innerHTML = '✕ ヒント：ピンインは Wǒ、または漢字で 我 です。';
+      }
+    }
+
+    function checkInput4() {
+      const val = document.getElementById('q4-input').value.trim().toLowerCase();
+      const fb = document.getElementById('q4-feedback');
+      fb.classList.remove('hidden', 'bg-black', 'text-white', 'bg-neutral-100', 'text-black');
+      if (['jiào', 'jiao', '叫'].includes(val)) {
+        fb.classList.add('bg-black', 'text-white');
+        fb.innerHTML = '✓ 正解です！ jiào (叫) は「〜という名前である」という意味の重要動詞です。';
+        speak('我叫Take');
+      } else {
+        fb.classList.add('bg-neutral-100', 'text-black');
+        fb.innerHTML = '✕ ヒント：ピンインは jiào、または漢字で 叫 です。';
       }
     }
   </script>
