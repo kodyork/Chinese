@@ -24,7 +24,7 @@
 </head>
 <body class="bg-neutral-50 text-neutral-900 antialiased min-h-screen flex flex-col">
 
-  <!-- Header & Navigation -->
+  <!-- Header -->
   <header class="bg-neutral-950 text-white border-b border-neutral-800 sticky top-0 z-50 shadow-md">
     <div class="max-w-5xl mx-auto px-4 py-4 flex flex-col sm:flex-row justify-between items-center gap-4">
       <div class="flex items-center space-x-3">
@@ -35,50 +35,28 @@
         </div>
       </div>
       
-      <!-- Day Switcher Buttons -->
-      <div class="flex items-center space-x-2 bg-neutral-900 p-1 rounded-xl border border-neutral-800" id="day-buttons">
-        <button onclick="switchDay(1)" id="btn-day1" class="px-3.5 py-1.5 rounded-lg text-xs font-semibold transition cursor-pointer bg-rose-600 text-white">Day 01</button>
-        <button onclick="switchDay(2)" id="btn-day2" class="px-3.5 py-1.5 rounded-lg text-xs font-semibold transition cursor-pointer text-neutral-400 hover:text-white">Day 02</button>
+      <!-- Day Selector Navigation -->
+      <div class="flex items-center space-x-2 bg-neutral-900 p-1.5 rounded-xl border border-neutral-800" id="day-navigation">
+        <button onclick="switchDay(1)" id="btn-day1" class="px-4 py-1.5 rounded-lg text-xs font-bold transition cursor-pointer bg-rose-600 text-white shadow-sm">Day 01</button>
+        <button onclick="switchDay(2)" id="btn-day2" class="px-4 py-1.5 rounded-lg text-xs font-bold transition cursor-pointer text-neutral-400 hover:text-white">Day 02</button>
       </div>
     </div>
   </header>
 
-  <!-- Hero Section -->
-  <section class="bg-neutral-950 text-white py-10 px-4 border-b border-neutral-800 relative overflow-hidden">
-    <div class="absolute -top-24 -right-24 w-96 h-96 bg-rose-950/30 rounded-full blur-3xl pointer-events-none"></div>
-    <div class="max-w-4xl mx-auto relative z-10">
-      <div class="inline-flex items-center space-x-2 text-rose-400 text-xs font-semibold tracking-wider uppercase mb-3 bg-rose-950/50 px-3 py-1 rounded-full border border-rose-900/50">
-        <i data-lucide="sparkles" class="w-3.5 h-3.5"></i>
-        <span id="hero-tag">Day Focus</span>
-      </div>
-      <h2 id="hero-title" class="text-3xl sm:text-4xl font-bold tracking-tight mb-4 text-neutral-100">読み込み中...</h2>
-      <div class="bg-neutral-900/90 border border-neutral-800 rounded-xl p-4 flex items-start space-x-3 text-xs text-neutral-300 backdrop-blur-sm">
-        <i data-lucide="globe" class="w-4 h-4 text-rose-400 shrink-0 mt-0.5"></i>
-        <div>
-          <strong class="text-rose-300 font-semibold">For English Speakers:</strong>
-          <span id="hero-english" class="ml-1 text-neutral-300">...</span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Main Dynamic Area -->
-  <main class="max-w-4xl mx-auto px-4 py-10 flex-1 w-full space-y-12" id="main-content">
-    <!-- 各Dayのコンテンツがここに自動注入されます -->
-  </main>
+  <!-- Dynamic Container -->
+  <div id="app-root" class="flex-1"></div>
 
   <!-- Footer -->
   <footer class="bg-neutral-950 text-neutral-400 py-8 text-center text-xs border-t border-neutral-800">
     <p>© kodyyork 2026 • Community Chinese Learning Hub</p>
   </footer>
 
-  <!-- データファイルの読み込み -->
+  <!-- Load Lesson Data -->
   <script src="./data/lessons/day01.js"></script>
   <script src="./data/lessons/day02.js"></script>
 
-  <!-- ロジック制御JS -->
+  <!-- Global Controller Script -->
   <script>
-    let currentDay = 1;
     let currentSpeed = 0.75;
 
     function setSpeed(speed) {
@@ -98,29 +76,59 @@
         utterance.lang = 'zh-CN';
         utterance.rate = currentSpeed;
         window.speechSynthesis.speak(utterance);
+      } else {
+        alert("お使いのブラウザは音声再生に対応していません。");
       }
     }
 
     function switchDay(dayNum) {
-      currentDay = dayNum;
-      
-      // ボタンの見た目更新
       document.getElementById('btn-day1').className = dayNum === 1 
-        ? "px-3.5 py-1.5 rounded-lg text-xs font-semibold transition cursor-pointer bg-rose-600 text-white" 
-        : "px-3.5 py-1.5 rounded-lg text-xs font-semibold transition cursor-pointer text-neutral-400 hover:text-white";
+        ? "px-4 py-1.5 rounded-lg text-xs font-bold transition cursor-pointer bg-rose-600 text-white shadow-sm" 
+        : "px-4 py-1.5 rounded-lg text-xs font-bold transition cursor-pointer text-neutral-400 hover:text-white";
       document.getElementById('btn-day2').className = dayNum === 2 
-        ? "px-3.5 py-1.5 rounded-lg text-xs font-semibold transition cursor-pointer bg-rose-600 text-white" 
-        : "px-3.5 py-1.5 rounded-lg text-xs font-semibold transition cursor-pointer text-neutral-400 hover:text-white";
+        ? "px-4 py-1.5 rounded-lg text-xs font-bold transition cursor-pointer bg-rose-600 text-white shadow-sm" 
+        : "px-4 py-1.5 rounded-lg text-xs font-bold transition cursor-pointer text-neutral-400 hover:text-white";
 
-      // データ切り替え
       const data = dayNum === 1 ? day01Data : day02Data;
-      
-      document.getElementById('hero-tag').innerText = data.tag;
-      document.getElementById('hero-title').innerText = data.title;
-      document.getElementById('hero-english').innerText = data.englishNote;
-      document.getElementById('main-content').innerHTML = data.htmlContent;
-
+      document.getElementById('app-root').innerHTML = data.render();
       lucide.createIcons();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // クイズ判定共通関数
+    function checkQuiz(qNum, optIdx, correctIdx, correctMsg, wrongMsg, speakText) {
+      const fb = document.getElementById(`q${qNum}-feedback`);
+      fb.classList.remove('hidden', 'bg-neutral-900', 'text-white', 'bg-neutral-100', 'text-neutral-800');
+
+      if (optIdx === correctIdx) {
+        fb.classList.add('bg-neutral-900', 'text-white');
+        fb.innerHTML = `✓ ${correctMsg}`;
+        if (speakText) speak(speakText);
+      } else {
+        fb.classList.add('bg-neutral-100', 'text-neutral-800');
+        fb.innerHTML = `✕ ${wrongMsg}`;
+      }
+    }
+
+    function revealAnswer(qNum, answerText, speakText) {
+      const slot = document.getElementById(`q${qNum}-slot`);
+      slot.innerHTML = `<span class="text-rose-600 font-bold border-b-2 border-rose-600 px-1.5 py-0.5 animate-pulse">${answerText}</span>`;
+      if (speakText) speak(speakText);
+    }
+
+    function checkInput(qNum, correctAnswers, speakText) {
+      const val = document.getElementById(`q${qNum}-input`).value.trim();
+      const fb = document.getElementById(`q${qNum}-feedback`);
+      fb.classList.remove('hidden', 'bg-neutral-900', 'text-white', 'bg-neutral-100', 'text-neutral-800');
+
+      if (correctAnswers.includes(val)) {
+        fb.classList.add('bg-neutral-900', 'text-white');
+        fb.innerHTML = '✓ 正解です！ 正しい中国語表記です。';
+        if (speakText) speak(speakText);
+      } else {
+        fb.classList.add('bg-neutral-100', 'text-neutral-800');
+        fb.innerHTML = `✕ 残念！ 正解は 「${correctAnswers[0]}」 です。`;
+      }
     }
 
     window.addEventListener('DOMContentLoaded', () => {
